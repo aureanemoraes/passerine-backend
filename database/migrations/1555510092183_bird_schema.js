@@ -13,6 +13,7 @@ class BirdSchema extends Schema {
       table.string('profilePicture')
       table.integer('category_id').unsigned().references('id').inTable('categories').onUpdate('CASCADE').onDelete('CASCADE')
       table.string('user_cpf').unsigned().references('cpf').inTable('users').onUpdate('CASCADE').onDelete('CASCADE')
+      table.primary(['anilhaCode'])
       table.timestamps()
     })
   }
