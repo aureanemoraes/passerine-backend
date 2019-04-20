@@ -6,14 +6,17 @@ const Model = use('Model')
 class Bird extends Model {
     static get primaryKey () {
         return 'anilhaCode'
-      }
+    }
 
+    static scopeImages(query) {
+        return query.select('*')
+    }
     user() {
         return this.belongsTo('App/Models/User')
     }
 
     images() {
-        return this.hasMany('App/Models/Image')
+        return this.hasMany('App/Models/Image', 'anilhaCode', 'bird_anilhaCode')
     }
 }
 

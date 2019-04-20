@@ -9,10 +9,15 @@ Route.get('/', () => {
 Route.post('/users', 'UserController.create')
 Route.post('/sessions', 'SessionController.create')
 
-Route.resource('birds', 'BirdController')
+Route.resource('/birds', 'BirdController')
   .apiOnly()
   .middleware(new Map([
     [
       ['store', 'update', 'destroy'], ['auth']
     ]
     ]))
+
+Route.post('/birds/:id/images', 'ImageController.store')
+    .middleware(['auth'])
+
+    Route.get('/images/:path', 'ImageController.show')
